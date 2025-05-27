@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservas de Restaurante</title>
+    <link rel="stylesheet" href="./styles.css">
+
     <script>
         const disponibilidad = {
             "El Buen Sabor": {
@@ -51,9 +53,12 @@
     </script>
 </head>
 <body>
+    <header>
     <h1>Reservas de Restaurante</h1>
     <p>¡Reserva el restaurante que más te guste!</p>
+    </header>
 
+    <main>
     <form action="reservar.php" method="POST">
         <label for="restaurante">Selecciona un restaurante:</label>
         <select id="restaurante" name="restaurante" onchange="actualizarDisponibilidad()" required>
@@ -82,5 +87,10 @@
 
         <button type="submit">Reservar</button>
     </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Reservas Online. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
