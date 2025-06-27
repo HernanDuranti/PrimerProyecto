@@ -20,15 +20,45 @@
         const fecha = params.get("fecha");
         const hora = params.get("hora");
         const personas = parseInt(params.get("personas"));
-
+        const direcciones = {
+        "Don Julio": "Guatemala 4691, Palermo",
+        "Güerrín": "Av. Corrientes 1368, San Nicolás",
+        "El Preferido": "Jorge Luis Borges 2108, Palermo",
+        "La Cabrera": "José A. Cabrera 5099, Palermo",
+        "Sarkis": "Thames 1101, Villa Crespo",
+        "El Cuartito": "Talcahuano 937, Recoleta",
+        "El Sanjuanino": "Posadas 1515, Recoleta",
+        "Pizzería Banchero": "Av. Corrientes 1300, San Nicolás",
+        "La Brigada": "Estados Unidos 465, San Telmo",
+        "La Carnicería": "Thames 2317, Palermo",
+        "La Mar": "Arévalo 2024, Palermo",
+        "El Gato Negro": "Av. Corrientes 1669, Balvanera",
+        "Portezuelo": "Vicente López 2160, Recoleta",
+        "Oviedo": "Beruti 2602, Recoleta",
+        "La Parolaccia": "Alicia Moreau de Justo 1052, Puerto Madero",
+        "Cabaña Las Lilas": "Av. Alicia Moreau de Justo 516, Puerto Madero",
+        "Chori": "Thames 1653, Palermo",
+        "Café Tortoni": "Av. de Mayo 825, Monserrat",
+        "Pizzería Kentucky": "Av. Santa Fe 4602, Palermo",
+        "Dada Bistro": "San Martín 941, Retiro",
+        "El Palacio de la Papa Frita": "Lavalle 735, San Nicolás",
+        "La Farola": "Av. Álvarez Jonte 3200, Villa del Parque",
+        "Las Nazarenas": "Reconquista 1132, Retiro",
+        "Il Gatto": "Av. del Libertador 16141, San Isidro"
+    };
         let capacidad = "No disponible";
 
         if (disponibilidad[restaurante]?.fechas[fecha]?.[hora] !== undefined) {
             capacidad = disponibilidad[restaurante].fechas[fecha][hora];
         }
 
+        const direccion = direcciones[restaurante] || "Dirección no disponible";
+        const linkDireccion = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(direccion)}`;
+
+
         document.getElementById("mensaje").innerHTML = `
             <p><strong>Restaurante:</strong> ${restaurante}</p>
+            <p><strong>Dirección:</strong> <a href="${linkDireccion}" target="_blank">${direccion}</a></p>
             <p><strong>Fecha:</strong> ${fecha}</p>
             <p><strong>Hora:</strong> ${hora}</p>
             <p><strong>Personas reservadas:</strong> ${personas}</p>
